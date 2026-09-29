@@ -15,7 +15,7 @@ Schema a fiocco di neve (snowflake):
 - **Dimensioni:** `Utente` (città → regione → stato; età → fascia d'età; sesso), `Prodotto` (→ tipologia), tempo (`Mese` → `Anno`)
 - 50 vendite, 25 clienti, 25 prodotti, periodo 2023–2025
 
-Analisi OLAP con tabelle pivot in Excel (`floquette.xlsm`): operazioni di *slice* e *drill-down* dell'incasso per anno, mese e sesso.
+## Analisi OLAP con tabelle pivot in Excel (`floquette.xlsm`): operazioni di *slice* e *drill-down* dell'incasso per anno, mese e sesso.
 
 Esempi di query:
 ```sql
