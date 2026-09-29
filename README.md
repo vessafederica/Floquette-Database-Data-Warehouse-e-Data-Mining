@@ -36,8 +36,11 @@ JOIN Citta c ON u.Id_citta = c.IDc
 JOIN Regione r ON c.Id_regione = r.IDr
 JOIN Stato s ON r.Id_stato = s.IDst
 GROUP BY s.Nome;
+```
 
 ### 3. Data mining con Weka (`floquette.csv`, cartella `data_mining/`)
+```
+
 Dataset di 50 istanze estratto dal data warehouse.
 
 | Tecnica | Attributi | Risultato |
