@@ -1,5 +1,7 @@
-# Floquette-Database-Data-Warehouse-e-Data-Mining
-Progetto d'esame Elementi di Basi di Dati e Data Mining, Università degli Studi di Torino, 2024. Progetto individuale
+# Floquette – Database, Data Warehouse e Data Mining
+
+Progetto d'esame Elementi di basi di dati e data mining, Università degli Studi di Torino, 2024.
+
 Il progetto segue l'intero percorso di analisi dei dati di un e-commerce di borse e accessori (Floquette): dal database operazionale al data warehouse, fino all'analisi con tecniche di data mining.
 
 > **Nota:** tutti i dati sono fittizi e creati a scopo didattico.
@@ -7,10 +9,13 @@ Il progetto segue l'intero percorso di analisi dei dati di un e-commerce di bors
 ## Contenuto
 
 ### 1. Database relazionale (`floquette.sql`)
+
 Database MariaDB con 7 tabelle: `Utente`, `Prodotto`, `Colore`, `Ordine`, `Comprende` (relazione N:M tra ordini e prodotti), `Pagamento`, `Recensione`. Integrità referenziale garantita da chiavi primarie ed esterne.
 
 ### 2. Data warehouse (`floquette_dw.sql`)
+
 Schema a fiocco di neve (snowflake):
+
 - **Tabella dei fatti:** `Vendita` (misure: `Quantità`, `Incasso`)
 - **Dimensioni:** `Utente` (città → regione → stato; età → fascia d'età; sesso), `Prodotto` (→ tipologia), tempo (`Mese` → `Anno`)
 - 50 vendite, 25 clienti, 25 prodotti, periodo 2023–2025
@@ -18,6 +23,7 @@ Schema a fiocco di neve (snowflake):
 Analisi OLAP con tabelle pivot in Excel (`floquette.xlsm`): operazioni di *slice* e *drill-down* dell'incasso per anno, mese e sesso.
 
 Esempi di query:
+
 ```sql
 -- Incasso totale per anno e tipologia di prodotto
 SELECT a.Nome AS Anno, t.Tipo, SUM(v.Incasso) AS Incasso_totale
@@ -38,7 +44,7 @@ JOIN Stato s ON r.Id_stato = s.IDst
 GROUP BY s.Nome;
 ```
 
-### 3. Data mining con Weka (`floquette.csv`, cartella `data_mining/`)
+### 3. Data mining con Weka (`floquette.csv`, cartella `data mining/`)
 
 Dataset di 50 istanze estratto dal data warehouse.
 
@@ -53,15 +59,22 @@ Dataset di 50 istanze estratto dal data warehouse.
 ## Struttura del repository
 
 ```
-├── database/          floquette.sql
-├── data_warehouse/    floquette_dw.sql, floquette.xlsm
-└── data_mining/       floquette.csv, output_j48.txt, output_naivebayes.txt,
-                       albero_j48.png, matrice_confusione.png, grafico_gomito.png
+├── floquette.sql                 database relazionale
+├── floquette_dw.sql              data warehouse
+├── floquette.csv                 dataset per Weka
+├── floquette.xlsm                analisi OLAP (tabelle pivot)
+└── data mining/
+    ├── tree                                      output Weka: albero J48
+    ├── tree visualization.png                    albero J48 (grafico)
+    ├── valutazione prestazioni tree.png          prestazioni J48 per classe
+    ├── Screenshot 2024-12-17 alle 13.38.12.png   matrice di confusione J48
+    ├── naivebayes                                output Weka: Naive Bayes
+    └── grafico gomito.png                        metodo del gomito (clustering)
 ```
 
 ## Come riprodurlo
 
-1. Importa `floquette.sql` e `floquette_dw.sql` in MariaDB/MySQL.
+1. Importa `floquette.sql` e `floquette_dw.sql` in MariaDB/MySQL (es. tramite phpMyAdmin).
 2. Apri `floquette.csv` in Weka ed esegui i classificatori J48 e Naive Bayes.
 3. Esegui il clustering e riproduci il grafico del gomito.
 
