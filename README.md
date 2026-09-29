@@ -39,7 +39,6 @@ GROUP BY s.Nome;
 ```
 
 ### 3. Data mining con Weka (`floquette.csv`, cartella `data_mining/`)
-```
 
 Dataset di 50 istanze estratto dal data warehouse.
 
@@ -52,6 +51,7 @@ Dataset di 50 istanze estratto dal data warehouse.
 **Limiti:** i modelli sono stati valutati sul training set, quindi l'accuratezza è ottimistica. Il prodotto "Jimmy" (48% dei dati) è l'unico porta telefono e viene classificato perfettamente per costruzione; sulle altre borse i risultati sono più deboli (es. recall della classe Isa: 0,17). Il dataset è piccolo e sintetico: i risultati hanno valore dimostrativo, non predittivo.
 
 ## Struttura del repository
+
 ```
 ├── database/          floquette.sql
 ├── data_warehouse/    floquette_dw.sql, floquette.xlsm
@@ -60,11 +60,11 @@ Dataset di 50 istanze estratto dal data warehouse.
 ```
 
 ## Come riprodurlo
-```
 
 1. Importa `floquette.sql` e `floquette_dw.sql` in MariaDB/MySQL.
 2. Apri `floquette.csv` in Weka ed esegui i classificatori J48 e Naive Bayes.
 3. Esegui il clustering e riproduci il grafico del gomito.
 
 ## Strumenti
+
 SQL · MariaDB · phpMyAdmin · Excel (tabelle pivot) · Weka
