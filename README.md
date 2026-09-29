@@ -15,11 +15,11 @@ Schema a fiocco di neve (snowflake):
 - **Dimensioni:** `Utente` (città → regione → stato; età → fascia d'età; sesso), `Prodotto` (→ tipologia), tempo (`Mese` → `Anno`)
 - 50 vendite, 25 clienti, 25 prodotti, periodo 2023–2025
 
-## Analisi OLAP con tabelle pivot in Excel (`floquette.xlsm`): operazioni di *slice* e *drill-down* dell'incasso per anno, mese e sesso.
+Analisi OLAP con tabelle pivot in Excel (`floquette.xlsm`): operazioni di *slice* e *drill-down* dell'incasso per anno, mese e sesso.
 
 Esempi di query:
 ```sql
---Incasso totale per anno e tipologia di prodotto
+-- Incasso totale per anno e tipologia di prodotto
 SELECT a.Nome AS Anno, t.Tipo, SUM(v.Incasso) AS Incasso_totale
 FROM Vendita v
 JOIN Mese m ON v.Id_mese = m.IDm
@@ -60,6 +60,8 @@ Dataset di 50 istanze estratto dal data warehouse.
 ```
 
 ## Come riprodurlo
+```
+
 1. Importa `floquette.sql` e `floquette_dw.sql` in MariaDB/MySQL.
 2. Apri `floquette.csv` in Weka ed esegui i classificatori J48 e Naive Bayes.
 3. Esegui il clustering e riproduci il grafico del gomito.
